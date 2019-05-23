@@ -56,6 +56,12 @@
 		width: 100%;
 		float: left;
 	}
+	.section-title-main{
+		font-size: 20px;
+	}
+	.fix-margin{
+		margin-top: 0px;
+	}
 }
 @media (min-width: 768px) {
 	
