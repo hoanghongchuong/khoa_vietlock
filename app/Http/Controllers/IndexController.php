@@ -85,8 +85,6 @@ class IndexController extends Controller {
 		
 		return view('templates.product_tpl', compact('title','keyword','description','products', 'com','cate_pro','partners'));
 	}
-
-
 	public function getProductList($id, Request $req)
 	{		
 		
@@ -199,6 +197,17 @@ class IndexController extends Controller {
 		$description = $data->description ? $data->description : $data->name;
 		$keyword = $data->keyword ? $data->keyword : $data->name;
 		return view('templates.service_list', compact('title','description','keyword','com','data','tintuc','hot_news'));
+	}
+	public function serviceDetail($alias)
+	{
+		$com = 'dich-vu';
+		$data = News::where('alias',$alias)->where('com','dich-vu')->first();
+		$hot_news = News::where('com','dich-vu')->orderBy('id','desc')->take(6)->get();
+		$title = $data->title ? $data->title : $data->name;
+		$description = $data->description ? $data->description : $data->name;
+		$keyword = $data->keyword ? $data->keyword : $data->name;
+		$img_share = asset('upload/news/'.$data->photo);
+		return view('templates.detail_service', compact('com','data','description','title','keyword','img_share','hot_news'));
 	}
 	public function khuyenmai()
 	{
